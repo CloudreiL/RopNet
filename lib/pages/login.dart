@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ropnet/classes/style.dart';
 
+import 'package:ropnet/pages/bottomnavbar.dart';
+
 class LoginPage extends StatelessWidget{
   const LoginPage({super.key});
 
@@ -20,10 +22,10 @@ class LoginPage extends StatelessWidget{
                 textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 74),
 
               Container(
-                height: 305,
+                height: 325,
                 width: 325,
                 decoration: BoxDec.DecBox,
                 child: Column(
@@ -56,6 +58,24 @@ class LoginPage extends StatelessWidget{
                         ),
                       ),
                     ),
+                      SizedBox(height: 30),
+                      Container(
+                        width: 193,
+                        child: ElevatedButton(onPressed: (){
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BottomNavBar(),
+                              )
+                          );
+                        },
+                            child: Text('Войти', style: TextStyles.StyleText,
+                            ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(255, 239, 132, 1)
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               )
