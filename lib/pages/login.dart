@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:ropnet/classes/style.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
+import 'package:ropnet/classes/style.dart';
 import 'package:ropnet/pages/bottomnavbar.dart';
 
-class LoginPage extends StatelessWidget{
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage>{
+
+  final maskFormatter = MaskTextInputFormatter(
+      mask: '+7 (###) ###-##-##',
+  );
 
   @override
 
@@ -39,6 +49,8 @@ class LoginPage extends StatelessWidget{
                       height: 50,
                       width: 315,
                       child: TextField(
+                        inputFormatters: [maskFormatter],
+                        keyboardType: TextInputType.number,
                         decoration: FieldDec.TextFieldDec.copyWith(
                           hintText: "Телефон",
                         ),
@@ -72,7 +84,7 @@ class LoginPage extends StatelessWidget{
                             child: Text('Войти', style: TextStyles.StyleText,
                             ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(255, 239, 132, 1)
+                            backgroundColor: ColorYel.colorYel
                           ),
                         ),
                       ),

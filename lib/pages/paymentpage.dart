@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ropnet/classes/style.dart';
 
+import 'package:ropnet/pages/balance/replenishbalancepage.dart';
+import 'package:ropnet/pages/paymenthistory/paymenthistory.dart';
+
 class PaymentPage extends StatelessWidget{
   const PaymentPage({super.key});
   @override
@@ -17,7 +20,14 @@ class PaymentPage extends StatelessWidget{
                 width: 301,
                 height: 69,
                 decoration: BoxDec.DecBox,
-                child: TextButton(onPressed: (){},
+                child: TextButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BalancePage()
+                    )
+                  );
+                },
                   child: Text("Пополнить баланс", style: TextStyles.StyleText.copyWith(fontSize: 25, color: Colors.white)),
                 ),
               ),
@@ -27,7 +37,12 @@ class PaymentPage extends StatelessWidget{
                 width: 301,
                 height: 69,
                 decoration: BoxDec.DecBox,
-                child: TextButton(onPressed: (){},
+                child: TextButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentHistory())
+                  );
+                },
                   child: Text("История платежей", style: TextStyles.StyleText.copyWith(fontSize: 25, color: Colors.white)),
                 ),
               ),

@@ -58,7 +58,7 @@ class AccountPage extends StatelessWidget{
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Мобильный телефон', style: TextStyles.StyleText.copyWith(color: Color.fromRGBO(255, 239, 132, 1), fontSize: 15)),
+                          Text('Мобильный телефон', style: TextStyles.StyleText.copyWith(color: ColorYel.colorYel, fontSize: 15)),
                           Text('+ 7 999 999 99 99', style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15))
                         ],
                       )
@@ -70,7 +70,7 @@ class AccountPage extends StatelessWidget{
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Контактный телефон', style: TextStyles.StyleText.copyWith(color: Color.fromRGBO(255, 239, 132, 1), fontSize: 15)),
+                          Text('Контактный телефон', style: TextStyles.StyleText.copyWith(color: ColorYel.colorYel, fontSize: 15)),
                           Text('-', style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15))
                         ],
                       )
@@ -82,7 +82,7 @@ class AccountPage extends StatelessWidget{
                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                        Text('Email', style: TextStyles.StyleText.copyWith(color: Color.fromRGBO(255, 239, 132, 1), fontSize: 15)),
+                        Text('Email', style: TextStyles.StyleText.copyWith(color: ColorYel.colorYel, fontSize: 15)),
                         Text('example@mail.ru', style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15))
                         ],
                       )
@@ -100,9 +100,9 @@ class AccountPage extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(padding: EdgeInsets.all(0),
-                  child: Text("Баланс", style: TextStyles.StyleText.copyWith(color: Color.fromRGBO(255, 239, 132, 1)))
+                  child: Text("Баланс", style: TextStyles.StyleText.copyWith(color: ColorYel.colorYel))
                   ),
-                  Text("1606,6 руб.", style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 30))
+                  Text("[amount] руб.", style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 30))
                 ],
               ),
             ),

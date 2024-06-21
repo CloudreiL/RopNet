@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ropnet/classes/style.dart';
 
 import 'package:ropnet/pages/accountpage.dart';
 import 'package:ropnet/pages/passwordpage.dart';
@@ -41,8 +42,8 @@ class _BottomNavBarPage extends State<BottomNavBar>{
               borderRadius: BorderRadius.circular(15),
                 child: BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
-                  backgroundColor: Color.fromRGBO(66, 74, 96, 1),
-                  selectedItemColor: Color.fromRGBO(255, 239, 132, 1),
+                  backgroundColor: ColorGray.colorsGray,
+                  selectedItemColor: ColorYel.colorYel,
                   unselectedItemColor: Colors.white,
                   showUnselectedLabels: false,
 

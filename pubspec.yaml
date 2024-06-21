@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_launcher_icons: "^0.13.1"
+  mask_text_input_formatter: ^2.9.0
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -97,6 +98,7 @@ flutter:
 
   assets:
     - "assets/images/logo/logo_ropnet.png"
+    - "assets/images/tinkoff.png"
 
   fonts:
     - family: Mons
