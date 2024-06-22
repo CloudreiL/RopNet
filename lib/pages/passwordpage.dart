@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:ropnet/classes/style.dart';
 
-class PasswordPage extends StatelessWidget{
+class PasswordPage extends StatefulWidget {
   const PasswordPage({super.key});
+
+  _PasswordPageState createState() => _PasswordPageState();
+}
+
+class _PasswordPageState extends State<PasswordPage>{
+
+  bool _isObscure = true;
+  bool _isObscure_2 = true;
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -30,8 +39,17 @@ class PasswordPage extends StatelessWidget{
                width: 300,
                margin: EdgeInsets.only(top: 15, bottom: 15),
                child: TextField(
+                 obscureText: _isObscure,
                  decoration: FieldDec.TextFieldDec.copyWith(
-                     suffixIcon: IconButton(onPressed: (){}, icon: const Icon(Icons.remove_red_eye))
+                   suffixIcon: IconButton(onPressed: (){
+                     setState(() {
+                       _isObscure = !_isObscure;
+                     });
+                   },
+                     icon: Icon(
+                       _isObscure ? Icons.remove_red_eye : Icons.remove_red_eye_outlined,
+                     ),
+                   ),
                  ),
                ),
              ),
@@ -40,8 +58,17 @@ class PasswordPage extends StatelessWidget{
                width: 300,
                margin: EdgeInsets.only(top:15),
                child: TextField(
+                 obscureText: _isObscure_2,
                  decoration: FieldDec.TextFieldDec.copyWith(
-                     suffixIcon: IconButton(onPressed: (){}, icon: const Icon(Icons.remove_red_eye))
+                   suffixIcon: IconButton(onPressed: (){
+                     setState(() {
+                       _isObscure_2 = !_isObscure_2;
+                     });
+                   },
+                     icon: Icon(
+                       _isObscure_2 ? Icons.remove_red_eye : Icons.remove_red_eye_outlined,
+                     ),
+                   ),
                  ),
                ),
              ),

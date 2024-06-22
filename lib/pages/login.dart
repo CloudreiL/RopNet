@@ -16,6 +16,9 @@ class _LoginPageState extends State<LoginPage>{
       mask: '+7 (###) ###-##-##',
   );
 
+  bool _isObscure = true;
+
+
   @override
 
   Widget build(BuildContext context){
@@ -62,10 +65,18 @@ class _LoginPageState extends State<LoginPage>{
                         height: 50,
                         width: 315,
                         child: TextField(
-                          obscureText: true,
+                          obscureText: _isObscure,
                           decoration: FieldDec.TextFieldDec.copyWith(
                               hintText: "Пароль",
-                              suffixIcon: IconButton(onPressed: (){}, icon: const Icon(Icons.remove_red_eye))
+                              suffixIcon: IconButton(onPressed: (){
+                                setState(() {
+                                  _isObscure = !_isObscure;
+                                });
+                              },
+                                icon: Icon(
+                                  _isObscure ? Icons.remove_red_eye : Icons.remove_red_eye_outlined,
+                                ),
+                              ),
                           ),
                         ),
                       ),
