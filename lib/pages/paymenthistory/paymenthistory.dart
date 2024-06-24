@@ -110,7 +110,21 @@ class _PaymentHistoryState extends State<PaymentHistory>{
               margin: const EdgeInsets.only(top:48),
               width: 193,
               child: ElevatedButton(onPressed: (){
-                if (_dateController_1.text.isNotEmpty && _dateController_2.text.isNotEmpty){
+                if (_dateController_1.text.isEmpty || _dateController_2.text.isEmpty){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Выберите даты',style: TextStyles.StyleText.copyWith(color: Colors.white)),
+                        duration: const Duration(seconds: 1),
+                      )
+                  );
+                } else if(_dateController_1.text == _dateController_2.text){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                       SnackBar(
+                          content: Text('Даты не должны совпадать',style: TextStyles.StyleText.copyWith(color: Colors.white)),
+                         duration: const Duration(seconds: 1),
+                      )
+                  );
+                }else{
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -118,13 +132,6 @@ class _PaymentHistoryState extends State<PaymentHistory>{
                           startDate: _dateController_1.text,
                           endDate: _dateController_2.text,
                         ),
-                      )
-                  );
-                } else{
-                  ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(
-                          content: Text('Выберите даты',style: TextStyles.StyleText.copyWith(color: Colors.white)),
-                         duration: const Duration(seconds: 1),
                       )
                   );
                 }

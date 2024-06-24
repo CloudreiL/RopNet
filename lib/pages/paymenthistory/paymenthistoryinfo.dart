@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:ropnet/classes/style.dart';
 import 'package:ropnet/classes/class.dart';
+import 'package:ropnet/pages/paymenthistory/payment.dart';
 
 class PaymentInfo extends StatefulWidget{
   final String startDate;
@@ -8,7 +10,7 @@ class PaymentInfo extends StatefulWidget{
 
   static int ind = 0;
 
-  const PaymentInfo ({Key? key, required this.startDate, required this.endDate}) : super(key: key);
+  const PaymentInfo ({super.key, required this.startDate, required this.endDate});
 
   @override
   _PaymentInfoState createState() => _PaymentInfoState();
@@ -27,7 +29,7 @@ class _PaymentInfoState extends State<PaymentInfo>{
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top:15),
+                margin: const EdgeInsets.only(top:15),
                 height: 77,
                 width: 331,
 
@@ -39,13 +41,13 @@ class _PaymentInfoState extends State<PaymentInfo>{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(padding: EdgeInsets.only(left: 15),
+                        Padding(padding: const EdgeInsets.only(left: 15),
                           child: Text(widget.startDate, style: TextStyles.StyleText.copyWith(color: Colors.white)),
                         ),
 
                         Text("—", style: TextStyles.StyleText.copyWith(color: Colors.white)),
 
-                        Padding(padding: EdgeInsets.only(right: 15),
+                        Padding(padding: const EdgeInsets.only(right: 15),
                           child: Text(widget.endDate, style: TextStyles.StyleText.copyWith(color: Colors.white)),
                         ),
                       ],
@@ -53,13 +55,13 @@ class _PaymentInfoState extends State<PaymentInfo>{
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 24),
+              Padding(padding: const EdgeInsets.only(top: 24),
                 child: Text("Детальная статистика для всех договоров", style: TextStyles.StyleText.copyWith(fontSize: 15)),
               ),
               TextButton(onPressed: (){},
                   child: Text("Скачать историю", style: TextStyles.StyleText.copyWith(fontSize: 15,color: ColorBlue.colorBlue),)
               ),
-              Divider(
+              const Divider(
                 color: ColorBlue.colorBlue, thickness: 2
               ),
               Expanded(child: ListView.builder(
@@ -70,26 +72,38 @@ class _PaymentInfoState extends State<PaymentInfo>{
                       spacing: 10,
                       runSpacing: 10,
                       children: [
-                        InkWell(
-                          onTap: (){
-                            PaymentInfo.ind = index;
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(top: 30),
-                            width: 331,
-                            height: 103,
+                        Padding(padding: const EdgeInsets.only(top:30),
+                          child: InkWell(
+                            onTap: (){
+                              PaymentInfo.ind = index;
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PaymentPage(
+                                      title: payments[index].date_paym,
+                                      paymentIndex: PaymentInfo.ind,
+                                    ),
+                                  )
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(15),
+                            child: Container(
+                              width: 331,
+                              height: 103,
 
-                            decoration: BoxDec.DecBox.copyWith(color: Colors.white),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(payments[index].date_paym, style: TextStyles.StyleText),
-                                Text(payments[index].num_paym, style: TextStyles.StyleText),
-                                Text(payments[index].contract_num as String, style: TextStyles.StyleText),
-                              ],
+                              decoration: BoxDec.DecBox.copyWith(color: Colors.white),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(payments[index].date_paym, style: TextStyles.StyleText),
+                                  Text(payments[index].num_paym, style: TextStyles.StyleText),
+                                  Text(payments[index].contract_num, style: TextStyles.StyleText)
+                                ],
+                              ),
                             ),
                           ),
                         )
+
                       ],
                       ),
                     );
