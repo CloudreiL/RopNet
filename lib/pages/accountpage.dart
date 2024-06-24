@@ -12,10 +12,10 @@ class AccountPage extends StatelessWidget{
         actions: [
           IconButton(onPressed: (){
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => NotificationPage(),
+                MaterialPageRoute(builder: (context) => const NotificationPage(),
             ),
             );
-          }, icon: Icon(Icons.notifications_none_rounded))
+          }, icon: const Icon(Icons.notifications_none_rounded))
         ],
       ),
       body: Center(
@@ -23,7 +23,7 @@ class AccountPage extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               width:337,
               height: 146,
 
@@ -31,11 +31,11 @@ class AccountPage extends StatelessWidget{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.account_circle_outlined, size: 100, color: Colors.white,),
+                  const Icon(Icons.account_circle_outlined, size: 100, color: Colors.white,),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(padding: EdgeInsets.only(right: 15),
+                      Padding(padding: const EdgeInsets.only(right: 15),
                           child: Text('Фамилия', style: TextStyles.StyleText.copyWith(color: Colors.white))
                       ),
                       Text('Имя', style: TextStyles.StyleText.copyWith(color: Colors.white)),
@@ -46,7 +46,7 @@ class AccountPage extends StatelessWidget{
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               width:337,
               height: 140,
 
@@ -54,7 +54,7 @@ class AccountPage extends StatelessWidget{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(padding: EdgeInsets.only(left:10, right:10),
+                  Padding(padding: const EdgeInsets.only(left:10, right:10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -64,9 +64,9 @@ class AccountPage extends StatelessWidget{
                       )
                   ),
 
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
 
-                  Padding(padding: EdgeInsets.only(left:10, right:10),
+                  Padding(padding: const EdgeInsets.only(left:10, right:10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -76,9 +76,9 @@ class AccountPage extends StatelessWidget{
                       )
                   ),
 
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
 
-                    Padding(padding: EdgeInsets.only(left:10, right:10),
+                    Padding(padding: const EdgeInsets.only(left:10, right:10),
                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -91,7 +91,7 @@ class AccountPage extends StatelessWidget{
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               width:337,
               height: 108,
               decoration: BoxDec.DecBox,
@@ -99,7 +99,7 @@ class AccountPage extends StatelessWidget{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(padding: EdgeInsets.all(0),
+                  Padding(padding: const EdgeInsets.all(0),
                   child: Text("Баланс", style: TextStyles.StyleText.copyWith(color: ColorYel.colorYel))
                   ),
                   Text("[amount] руб.", style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 30))

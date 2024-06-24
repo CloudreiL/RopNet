@@ -15,7 +15,7 @@ class BalancePage extends StatelessWidget{
       body: Center(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top:28, bottom: 28),
+            Padding(padding: const EdgeInsets.only(top:28, bottom: 28),
               child: Text("Вы можете пополнять свой лицевой счет удобным для вас способом через платежные терминалы, через банк, со счета мобильного телефона",
                 style: TextStyles.StyleText.copyWith(
                   fontSize: 15,
@@ -33,7 +33,7 @@ class BalancePage extends StatelessWidget{
                 onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ReplenishPage())
+                    MaterialPageRoute(builder: (context) => const ReplenishPage())
                   );
                 },
                 child: Image.asset("assets/images/tinkoff.png"),

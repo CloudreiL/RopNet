@@ -11,6 +11,7 @@ const List <String> options = <String>[
 class ReplenishPage extends StatefulWidget {
   const ReplenishPage({super.key});
 
+  @override
   _ReplenishPageState createState() => _ReplenishPageState();
 }
 
@@ -31,17 +32,17 @@ class _ReplenishPageState extends State<ReplenishPage>{
               Container(
                 width: 331,
                 height: 108,
-                margin: EdgeInsets.only(top: 47),
+                margin: const EdgeInsets.only(top: 47),
 
                 decoration: BoxDec.DecBox,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(padding: EdgeInsets.only(top:10),
+                    Padding(padding: const EdgeInsets.only(top:10),
                       child: Text("Выберите договор", style: TextStyles.StyleText.copyWith(color: Colors.white)),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.only(top: 5),
                       child: DropdownMenu(
                         dropdownMenuEntries: options.map<DropdownMenuEntry<String>>((String value) {return DropdownMenuEntry<String>(value: value, label: value);}).toList(),
                         width: 290,
@@ -52,21 +53,21 @@ class _ReplenishPageState extends State<ReplenishPage>{
                   ],
                 ),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Container(
                 width: 331,
                 height: 108,
-                margin: EdgeInsets.only(top: 25),
+                margin: const EdgeInsets.only(top: 25),
 
                 decoration: BoxDec.DecBox,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(padding: EdgeInsets.only(top:10),
+                    Padding(padding: const EdgeInsets.only(top:10),
                       child: Text("Сумма", style: TextStyles.StyleText.copyWith(color: Colors.white)),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.only(top: 5),
                       child: SizedBox(
                         width: 290,
                         child: TextField(
@@ -78,14 +79,14 @@ class _ReplenishPageState extends State<ReplenishPage>{
                   ],
                 ),
               ),
-              SizedBox(height: 100),
-              Container(
+              const SizedBox(height: 100),
+              SizedBox(
                 width: 193,
                 child: ElevatedButton(onPressed: (){},
-                  child: Text('Оплатить', style: TextStyles.StyleText,
-                  ),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorYel.colorYel
+                  ),
+                  child: const Text('Оплатить', style: TextStyles.StyleText,
                   ),
                 ),
               ),

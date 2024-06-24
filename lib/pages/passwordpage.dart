@@ -5,6 +5,7 @@ import 'package:ropnet/classes/style.dart';
 class PasswordPage extends StatefulWidget {
   const PasswordPage({super.key});
 
+  @override
   _PasswordPageState createState() => _PasswordPageState();
 }
 
@@ -23,21 +24,21 @@ class _PasswordPageState extends State<PasswordPage>{
         child: Center(
          child: Column(
            children: [
-             Padding(padding: EdgeInsets.all(27),
+             const Padding(padding: EdgeInsets.all(27),
              child: Icon(Icons.vpn_key_outlined, color: ColorGray.colorsGray, size: 100)
              ),
-             Text("Текущий пароль", style: TextStyles.StyleText),
+             const Text("Текущий пароль", style: TextStyles.StyleText),
              Container(
                width: 300,
-               margin: EdgeInsets.only(top: 15, bottom: 15),
+               margin: const EdgeInsets.only(top: 15, bottom: 15),
                child: TextField(
                  decoration: FieldDec.TextFieldDec,
                ),
              ),
-             Text("Новый пароль", style: TextStyles.StyleText),
+             const Text("Новый пароль", style: TextStyles.StyleText),
              Container(
                width: 300,
-               margin: EdgeInsets.only(top: 15, bottom: 15),
+               margin: const EdgeInsets.only(top: 15, bottom: 15),
                child: TextField(
                  obscureText: _isObscure,
                  decoration: FieldDec.TextFieldDec.copyWith(
@@ -53,10 +54,10 @@ class _PasswordPageState extends State<PasswordPage>{
                  ),
                ),
              ),
-             Text("Подтверждение пароля", style: TextStyles.StyleText),
+             const Text("Подтверждение пароля", style: TextStyles.StyleText),
              Container(
                width: 300,
-               margin: EdgeInsets.only(top:15),
+               margin: const EdgeInsets.only(top:15),
                child: TextField(
                  obscureText: _isObscure_2,
                  decoration: FieldDec.TextFieldDec.copyWith(

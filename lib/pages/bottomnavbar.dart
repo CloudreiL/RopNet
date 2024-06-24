@@ -17,10 +17,10 @@ class _BottomNavBarPage extends State<BottomNavBar>{
   int myCurrentIndex = 0;
 
   List pages =[
-    AccountPage(),
-    PaymentPage(),
-    PasswordPage(),
-    TechSuppPage()
+    const AccountPage(),
+    const PaymentPage(),
+    const PasswordPage(),
+    const TechSuppPage()
   ];
 
   @override
@@ -28,7 +28,7 @@ class _BottomNavBarPage extends State<BottomNavBar>{
     return Scaffold(
       bottomNavigationBar: (
       Container(
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: BoxDecoration(
           boxShadow: [BoxShadow(
               color: Colors.black.withOpacity(0.5),
@@ -48,7 +48,7 @@ class _BottomNavBarPage extends State<BottomNavBar>{
                   showUnselectedLabels: false,
 
                   currentIndex: myCurrentIndex,
-                  items: [
+                  items: const [
                     BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: "Аккаунт"),
                     BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet_outlined),label: "Оплата"),
                     BottomNavigationBarItem(icon: Icon(Icons.vpn_key_outlined), label: "Пароль"),

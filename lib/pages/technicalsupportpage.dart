@@ -10,7 +10,7 @@ class TechSuppPage extends StatelessWidget{
       appBar: AppBar(
         title: Text("ТехПоддержка", style: TextStyles.StyleText.copyWith(fontSize: 30)),
       ),
-        body: Center(
+        body: const Center(
           child: Text("TechSupp Page ", textAlign:  TextAlign.center,),
         )
     );

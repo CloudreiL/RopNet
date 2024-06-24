@@ -15,7 +15,7 @@ class PaymentPage extends StatelessWidget{
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: 62),
+              const SizedBox(height: 62),
               Container(
                 width: 301,
                 height: 69,
@@ -24,14 +24,14 @@ class PaymentPage extends StatelessWidget{
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => BalancePage()
+                        builder: (context) => const BalancePage()
                     )
                   );
                 },
                   child: Text("Пополнить баланс", style: TextStyles.StyleText.copyWith(fontSize: 25, color: Colors.white)),
                 ),
               ),
-              SizedBox(height: 46),
+              const SizedBox(height: 46),
 
               Container(
                 width: 301,
@@ -40,7 +40,7 @@ class PaymentPage extends StatelessWidget{
                 child: TextButton(onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PaymentHistory())
+                    MaterialPageRoute(builder: (context) => const PaymentHistory())
                   );
                 },
                   child: Text("История платежей", style: TextStyles.StyleText.copyWith(fontSize: 25, color: Colors.white)),

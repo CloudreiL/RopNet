@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ropnet/classes/style.dart';
+import 'package:ropnet/pages/paymenthistory/paymenthistoryinfo.dart';
 
 const List <String> options = <String>[
   "0001",
@@ -12,13 +13,15 @@ const List <String> options = <String>[
 class PaymentHistory extends StatefulWidget{
   const PaymentHistory ({super.key});
 
+  @override
   _PaymentHistoryState createState() => _PaymentHistoryState();
 }
 
 class _PaymentHistoryState extends State<PaymentHistory>{
 
-  TextEditingController _dateController_1 = TextEditingController();
-  TextEditingController _dateController_2 = TextEditingController();
+  final TextEditingController _dateController_1 = TextEditingController();
+  final TextEditingController _dateController_2 = TextEditingController();
+
 
   @override
   Widget build (BuildContext context){
@@ -32,17 +35,17 @@ class _PaymentHistoryState extends State<PaymentHistory>{
             Container(
               width: 350,
               height: 108,
-              margin: EdgeInsets.only(top: 47),
+              margin: const EdgeInsets.only(top: 47),
 
               decoration: BoxDec.DecBox,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.only(top:10),
+                  Padding(padding: const EdgeInsets.only(top:10),
                     child: Text("Выберите договор", style: TextStyles.StyleText.copyWith(color: Colors.white)),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.only(top: 5),
                     child: DropdownMenu(
                         dropdownMenuEntries: options.map<DropdownMenuEntry<String>>((String value) {return DropdownMenuEntry<String>(value: value, label: value);}).toList(),
                         width: 290,
@@ -54,7 +57,7 @@ class _PaymentHistoryState extends State<PaymentHistory>{
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top:22),
+              margin: const EdgeInsets.only(top:22),
               width: 350,
               height: 108,
 
@@ -62,20 +65,20 @@ class _PaymentHistoryState extends State<PaymentHistory>{
 
               child: Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 10),
+                  Padding(padding: const EdgeInsets.only(top: 10),
                     child: Text("Период", style: TextStyles.StyleText.copyWith(color: Colors.white)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 5),
-                        width: 150,
+                        margin: const EdgeInsets.only(left: 5),
+                        width: 160,
                         height: 50,
 
                         child: TextField(
                           controller: _dateController_1,
-                          decoration: FieldDec.TextFieldDec.copyWith(prefixIcon: Icon(Icons.calendar_today_outlined, size: 20,)),
+                          decoration: FieldDec.TextFieldDec.copyWith(prefixIcon: const Icon(Icons.calendar_today_outlined, size: 20)),
                           readOnly: true,
                           onTap:
                           (){
@@ -84,13 +87,13 @@ class _PaymentHistoryState extends State<PaymentHistory>{
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(right: 5),
-                        width: 150,
+                        margin: const EdgeInsets.only(right: 5),
+                        width: 160,
                         height: 50,
 
                         child: TextField(
                           controller: _dateController_2,
-                          decoration: FieldDec.TextFieldDec.copyWith(prefixIcon: Icon(Icons.calendar_today_outlined, size: 20,)),
+                          decoration: FieldDec.TextFieldDec.copyWith(prefixIcon: const Icon(Icons.calendar_today_outlined, size: 20)),
                           readOnly: true,
                           onTap:
                           (){
@@ -104,14 +107,32 @@ class _PaymentHistoryState extends State<PaymentHistory>{
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top:48),
+              margin: const EdgeInsets.only(top:48),
               width: 193,
               child: ElevatedButton(onPressed: (){
+                if (_dateController_1.text.isNotEmpty && _dateController_2.text.isNotEmpty){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentInfo(
+                          startDate: _dateController_1.text,
+                          endDate: _dateController_2.text,
+                        ),
+                      )
+                  );
+                } else{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                       SnackBar(
+                          content: Text('Выберите даты',style: TextStyles.StyleText.copyWith(color: Colors.white)),
+                         duration: const Duration(seconds: 1),
+                      )
+                  );
+                }
               },
-                child: Text('Показать', style: TextStyles.StyleText,
-                ),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorYel.colorYel
+                ),
+                child: const Text('Показать', style: TextStyles.StyleText,
                 ),
               ),
             ),
@@ -120,35 +141,37 @@ class _PaymentHistoryState extends State<PaymentHistory>{
       ),
     );
   }
+
   Future<void> _selectDate_1() async{
-    DateTime? _picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(2100)
     );
 
-    if (_picked != null){
+    if (picked != null){
       setState(() {
-        _dateController_1.text = _picked.toString().split(" ")[0];
+        _dateController_1.text = picked.toString().split(" ")[0];
       });
     }
   }
 
   Future<void> _selectDate_2() async{
-    DateTime? _picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(2100)
     );
 
-    if (_picked != null){
+    if (picked != null){
       setState(() {
-        _dateController_2.text = _picked.toString().split(" ")[0];
+        _dateController_2.text = picked.toString().split(" ")[0];
       });
     }
   }
+
 
 }
 

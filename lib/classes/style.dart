@@ -9,6 +9,10 @@ class ColorYel{
   static const Color colorYel = Color.fromRGBO(255, 239, 132, 1);
 }
 
+class ColorBlue{
+  static const Color colorBlue = Color.fromRGBO(77, 147, 207, 1);
+}
+
 class TextStyles{
   // ignore: constant_identifier_names
   static const TextStyle StyleText = TextStyle(

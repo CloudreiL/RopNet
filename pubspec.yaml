@@ -46,6 +46,9 @@ flutter_launcher_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_native_splash: ^2.4.0
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -104,3 +107,8 @@ flutter:
     - family: Mons
       fonts:
         - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+
+
+flutter_native_splash:
+  image: assets/images/logo/logo_ropnet_dark.png
+  color: "#ffef84"

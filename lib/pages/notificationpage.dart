@@ -9,7 +9,7 @@ class NotificationPage extends StatelessWidget{
       appBar: AppBar(
         title: Text("Уведомления", style: TextStyles.StyleText.copyWith(fontSize: 30),),
       ),
-        body: Center(
+        body: const Center(
           child: Text("У вас пока нет уведомлений", textAlign:  TextAlign.center,
           style: TextStyles.StyleText,),
         )
