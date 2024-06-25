@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ropnet/classes/style.dart';
 import 'package:ropnet/classes/class.dart';
-import 'package:ropnet/pages/paymenthistory/payment.dart';
+import 'package:ropnet/pages/paymenthistory/paymentstatus/paymentpaid.dart';
 
 class PaymentInfo extends StatefulWidget{
   final String startDate;
@@ -59,10 +59,10 @@ class _PaymentInfoState extends State<PaymentInfo>{
                 child: Text("Детальная статистика для всех договоров", style: TextStyles.StyleText.copyWith(fontSize: 15)),
               ),
               TextButton(onPressed: (){},
-                  child: Text("Скачать историю", style: TextStyles.StyleText.copyWith(fontSize: 15,color: ColorBlue.colorBlue),)
+                  child: Text("Скачать историю", style: TextStyles.StyleText.copyWith(fontSize: 15,color: ColorsProj.colorBlue),)
               ),
               const Divider(
-                color: ColorBlue.colorBlue, thickness: 2
+                color: ColorsProj.colorBlue, thickness: 2
               ),
               Expanded(child: ListView.builder(
                 itemCount: payments.length,
@@ -76,15 +76,46 @@ class _PaymentInfoState extends State<PaymentInfo>{
                           child: InkWell(
                             onTap: (){
                               PaymentInfo.ind = index;
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PaymentPage(
-                                      title: payments[index].date_paym,
-                                      paymentIndex: PaymentInfo.ind,
-                                    ),
-                                  )
-                              );
+                              if (payments[index].status_paym == "Оплачен"){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PaymentPaidPage(
+                                        title: payments[index].date_paym,
+                                        paymentIndex: PaymentInfo.ind,
+                                        colorPaid: ColorsProj.colorBlue,
+                                        iconPaid: const Icon(Icons.check, color: ColorsProj.colorsGray, size: 110),
+                                        fontPaid: Colors.white,
+                                      ),
+                                    )
+                                );
+                              }else if (payments[index].status_paym == "В ожидании"){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PaymentPaidPage(
+                                        title: payments[index].date_paym,
+                                        paymentIndex: PaymentInfo.ind,
+                                        colorPaid: ColorsProj.colorYel,
+                                        iconPaid: const Icon(Icons.schedule, color: ColorsProj.colorsGray, size: 110),
+                                        fontPaid: ColorsProj.colorsGray,
+                                      ),
+                                    )
+                                );
+                              }else{
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PaymentPaidPage(
+                                        title: payments[index].date_paym,
+                                        paymentIndex: PaymentInfo.ind,
+                                        colorPaid: ColorsProj.colorRed,
+                                        iconPaid: const Icon(Icons.close, color: ColorsProj.colorsGray, size: 110),
+                                        fontPaid: ColorsProj.colorsGray,
+                                      ),
+                                    )
+                                );
+                              }
                             },
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
@@ -103,7 +134,6 @@ class _PaymentInfoState extends State<PaymentInfo>{
                             ),
                           ),
                         )
-
                       ],
                       ),
                     );

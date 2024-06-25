@@ -25,7 +25,7 @@ class _PasswordPageState extends State<PasswordPage>{
          child: Column(
            children: [
              const Padding(padding: EdgeInsets.all(27),
-             child: Icon(Icons.vpn_key_outlined, color: ColorGray.colorsGray, size: 100)
+             child: Icon(Icons.vpn_key_outlined, color: ColorsProj.colorsGray, size: 100)
              ),
              const Text("Текущий пароль", style: TextStyles.StyleText),
              Container(

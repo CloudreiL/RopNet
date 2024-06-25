@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 
 
-class ColorGray{
+class ColorsProj{
   static const Color colorsGray=  Color.fromRGBO(66, 74, 96, 1);
-}
-
-class ColorYel{
   static const Color colorYel = Color.fromRGBO(255, 239, 132, 1);
-}
-
-class ColorBlue{
   static const Color colorBlue = Color.fromRGBO(77, 147, 207, 1);
+  static const Color colorRed = Color.fromRGBO(255, 139, 132, 1);
 }
 
 class TextStyles{
@@ -24,7 +19,7 @@ class TextStyles{
 
 class BoxDec{
   static BoxDecoration DecBox = BoxDecoration(
-    color: ColorGray.colorsGray,
+    color: ColorsProj.colorsGray,
       boxShadow: [BoxShadow(
           color: Colors.black.withOpacity(0.5),
           offset: const Offset(0,3),
@@ -45,7 +40,7 @@ class FieldDec{
         borderRadius: BorderRadius.circular(20)
     ),
     labelStyle: TextStyles.StyleText.copyWith(
-      color: ColorGray.colorsGray
+      color: ColorsProj.colorsGray
     ),
     filled: true,
     fillColor: Colors.white,
@@ -61,7 +56,7 @@ class DropMenuDec{
         borderRadius: BorderRadius.circular(20)
     ),
     labelStyle: TextStyles.StyleText.copyWith(
-        color: ColorGray.colorsGray
+        color: ColorsProj.colorsGray
     ),
     filled: true,
     fillColor: Colors.white,

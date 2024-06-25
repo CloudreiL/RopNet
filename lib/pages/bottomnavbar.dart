@@ -42,8 +42,8 @@ class _BottomNavBarPage extends State<BottomNavBar>{
               borderRadius: BorderRadius.circular(15),
                 child: BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
-                  backgroundColor: ColorGray.colorsGray,
-                  selectedItemColor: ColorYel.colorYel,
+                  backgroundColor: ColorsProj.colorsGray,
+                  selectedItemColor: ColorsProj.colorYel,
                   unselectedItemColor: Colors.white,
                   showUnselectedLabels: false,
 

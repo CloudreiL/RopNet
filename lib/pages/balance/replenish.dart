@@ -84,7 +84,7 @@ class _ReplenishPageState extends State<ReplenishPage>{
                 width: 193,
                 child: ElevatedButton(onPressed: (){},
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorYel.colorYel
+                      backgroundColor: ColorsProj.colorYel
                   ),
                   child: const Text('Оплатить', style: TextStyles.StyleText,
                   ),

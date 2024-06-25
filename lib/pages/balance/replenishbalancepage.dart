@@ -19,7 +19,7 @@ class BalancePage extends StatelessWidget{
               child: Text("Вы можете пополнять свой лицевой счет удобным для вас способом через платежные терминалы, через банк, со счета мобильного телефона",
                 style: TextStyles.StyleText.copyWith(
                   fontSize: 15,
-                  color: ColorGray.colorsGray
+                  color: ColorsProj.colorsGray
                 ),
                 textAlign: TextAlign.center,
               )

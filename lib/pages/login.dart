@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage>{
                           );
                         },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorYel.colorYel
+                            backgroundColor: ColorsProj.colorYel
                           ),
                             child: const Text('Войти', style: TextStyles.StyleText,
                             ),

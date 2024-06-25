@@ -117,14 +117,7 @@ class _PaymentHistoryState extends State<PaymentHistory>{
                         duration: const Duration(seconds: 1),
                       )
                   );
-                } else if(_dateController_1.text == _dateController_2.text){
-                  ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(
-                          content: Text('Даты не должны совпадать',style: TextStyles.StyleText.copyWith(color: Colors.white)),
-                         duration: const Duration(seconds: 1),
-                      )
-                  );
-                }else{
+                } else{
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -137,7 +130,7 @@ class _PaymentHistoryState extends State<PaymentHistory>{
                 }
               },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorYel.colorYel
+                    backgroundColor: ColorsProj.colorYel
                 ),
                 child: const Text('Показать', style: TextStyles.StyleText,
                 ),
@@ -178,7 +171,5 @@ class _PaymentHistoryState extends State<PaymentHistory>{
       });
     }
   }
-
-
 }
 
