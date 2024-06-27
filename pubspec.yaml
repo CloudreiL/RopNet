@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: "^0.13.1"
   mask_text_input_formatter: ^2.9.0
+  http: ^1.2.1
+  json_annotation: ^4.4.0
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -47,6 +49,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_native_splash: ^2.4.0
+  build_runner: ^2.1.7
+  json_serializable: ^6.1.1
 
 
 
@@ -55,7 +59,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

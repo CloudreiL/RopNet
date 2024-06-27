@@ -1,114 +1,187 @@
 import 'package:flutter/material.dart';
 import 'package:ropnet/classes/style.dart';
 import 'package:ropnet/pages/notificationpage.dart';
+import 'package:ropnet/api_service.dart';
+import 'package:ropnet/user.dart';
 
-class AccountPage extends StatelessWidget{
-  const AccountPage({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context){
+  _AccountPageState createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
+  late Future<User> futureUser;
+  final ApiService apiService = ApiService();
+
+  @override
+  void initState() {
+    super.initState();
+    futureUser = apiService.fetchUser();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Аккаунт', style: TextStyles.StyleText.copyWith(fontSize: 30),),
+        title: Text(
+          'Аккаунт',
+          style: TextStyles.StyleText.copyWith(fontSize: 30),
+        ),
         actions: [
-          IconButton(onPressed: (){
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const NotificationPage(),
-            ),
-            );
-          }, icon: const Icon(Icons.notifications_none_rounded))
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificationPage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.notifications_none_rounded),
+          ),
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              margin: const EdgeInsets.all(10),
-              width:337,
-              height: 146,
-
-              decoration: BoxDec.DecBox,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: FutureBuilder<User>(
+          future: futureUser,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              User user = snapshot.data!;
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Icon(Icons.account_circle_outlined, size: 100, color: Colors.white,),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: const EdgeInsets.only(right: 15),
-                          child: Text('Фамилия', style: TextStyles.StyleText.copyWith(color: Colors.white))
-                      ),
-                      Text('Имя', style: TextStyles.StyleText.copyWith(color: Colors.white)),
-                      Text('Отчество', style: TextStyles.StyleText.copyWith(color: Colors.white))
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              width:337,
-              height: 140,
-
-              decoration: BoxDec.DecBox,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(padding: const EdgeInsets.only(left:10, right:10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Мобильный телефон', style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel, fontSize: 15)),
-                          Text('+ 7 999 999 99 99', style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15))
-                        ],
-                      )
-                  ),
-
-                  const SizedBox(height: 15),
-
-                  Padding(padding: const EdgeInsets.only(left:10, right:10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Контактный телефон', style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel, fontSize: 15)),
-                          Text('-', style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15))
-                        ],
-                      )
-                  ),
-
-                  const SizedBox(height: 15),
-
-                    Padding(padding: const EdgeInsets.only(left:10, right:10),
-                     child: Row(
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    width: 337,
+                    height: 146,
+                    decoration: BoxDec.DecBox,
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                        Text('Email', style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel, fontSize: 15)),
-                        Text('example@mail.ru', style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15))
-                        ],
-                      )
-                    )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              width:337,
-              height: 108,
-              decoration: BoxDec.DecBox,
-
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(padding: const EdgeInsets.all(0),
-                  child: Text("Баланс", style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel))
+                      children: [
+                        const Icon(
+                          Icons.account_circle_outlined,
+                          size: 100,
+                          color: Colors.white,
+                        ),
+                          Padding(padding: EdgeInsets.only(right: 15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  user.firstName,
+                                  style: TextStyles.StyleText.copyWith(color: Colors.white),
+                                ),
+                                Text(
+                                  user.secondName,
+                                  style: TextStyles.StyleText.copyWith(color: Colors.white),
+                                ),
+                                Text(
+                                  user.lastName,
+                                  style: TextStyles.StyleText.copyWith(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          )
+                      ],
+                    ),
                   ),
-                  Text("[amount] руб.", style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 30))
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    width: 337,
+                    height: 140,
+                    decoration: BoxDec.DecBox,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Телефон',
+                                style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel, fontSize: 15),
+                              ),
+                              Text(
+                                user.phone,
+                                style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Контактный телефон',
+                                style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel, fontSize: 15),
+                              ),
+                              Text(
+                                '-', // Место для контактного телефона, если он отличается
+                                style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Email',
+                                style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel, fontSize: 15),
+                              ),
+                              Text(
+                                user.email,
+                                style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    width: 337,
+                    height: 108,
+                    decoration: BoxDec.DecBox,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Text(
+                            "Баланс",
+                            style: TextStyles.StyleText.copyWith(color: ColorsProj.colorYel),
+                          ),
+                        ),
+                        Text(
+                          "${user.balance} руб.",
+                          style: TextStyles.StyleText.copyWith(color: Colors.white, fontSize: 30),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-            ),
-          ],
+              );
+            } else {
+              return Text('No data found');
+            }
+          },
         ),
-      )
+      ),
     );
   }
 }
