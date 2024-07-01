@@ -16,7 +16,7 @@ class ApiService {
 
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body);
-      return User.fromJson(jsonResponse[0]); // Предположим, что мы используем первого пользователя из списка
+      return User.fromJson(jsonResponse[0]);
     } else {
       throw Exception('Failed to load user');
     }

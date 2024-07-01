@@ -5,7 +5,7 @@ import 'package:ropnet/api_service.dart';
 import 'package:ropnet/user.dart';
 
 class AccountPage extends StatefulWidget {
-  const AccountPage({Key? key}) : super(key: key);
+  const AccountPage({super.key});
 
   @override
   _AccountPageState createState() => _AccountPageState();
@@ -48,7 +48,7 @@ class _AccountPageState extends State<AccountPage> {
           future: futureUser,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (snapshot.hasData) {
@@ -69,7 +69,7 @@ class _AccountPageState extends State<AccountPage> {
                           size: 100,
                           color: Colors.white,
                         ),
-                          Padding(padding: EdgeInsets.only(right: 15),
+                          Padding(padding: const EdgeInsets.only(right: 15),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -177,7 +177,7 @@ class _AccountPageState extends State<AccountPage> {
                 ],
               );
             } else {
-              return Text('No data found');
+              return const Text('No data found');
             }
           },
         ),

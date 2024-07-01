@@ -5,13 +5,13 @@ import 'package:ropnet/user.dart';
 
 class PaymentPaidPage extends StatefulWidget {
   const PaymentPaidPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.paymentIndex,
     required this.colorPaid,
     required this.iconPaid,
     required this.fontPaid,
-  }) : super(key: key);
+  });
 
   final String title;
   final int paymentIndex;
@@ -45,7 +45,7 @@ class _PaymentPaidPageState extends State<PaymentPaidPage> {
         future: futureUser,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
@@ -163,7 +163,7 @@ class _PaymentPaidPageState extends State<PaymentPaidPage> {
               ),
             );
           } else {
-            return Center(child: Text('No data found'));
+            return const Center(child: Text('No data found'));
           }
         },
       ),

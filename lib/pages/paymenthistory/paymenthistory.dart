@@ -44,7 +44,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
               future: futureUser,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else if (snapshot.hasData) {
@@ -81,7 +81,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                     ),
                   );
                 } else {
-                  return Text('No data found');
+                  return const Text('No data found');
                 }
               },
             ),
