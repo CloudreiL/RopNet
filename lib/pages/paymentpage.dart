@@ -46,7 +46,6 @@ class PaymentPage extends StatelessWidget{
                   child: Text("История платежей", style: TextStyles.StyleText.copyWith(fontSize: 25, color: Colors.white)),
                 ),
               ),
-
             ],
           ),
         ),
